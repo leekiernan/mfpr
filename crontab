@@ -1,0 +1,1 @@
+* * * * * GEM_HOME=/usr/local/bundle /usr/local/bin/ruby /app/main.rb > /proc/1/fd/1 2>/proc/1/fd/2
