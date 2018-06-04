@@ -1,6 +1,7 @@
+source 'https://rubygems.org'
+
 gem 'capybara'
 gem 'selenium-webdriver'
-gem 'chromedriver-helper' # <- New!
-# gem 'nokogiri'
+gem 'chromedriver-helper'
 gem 'sqlite3'
 gem 'activerecord'
