@@ -1,1 +1,4 @@
-* * * * * GEM_HOME=/usr/local/bundle /usr/local/bin/ruby /app/main.rb > /proc/1/fd/1 2>/proc/1/fd/2
+PATH="/usr/local/bundle/bin:/usr/local/bundle/gems/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+GEM_HOME="/usr/local/bundle"
+
+*/3 * * * * cd /app && /usr/local/bin/ruby main.rb > /proc/1/fd/1 2>/proc/1/fd/2
