@@ -1,14 +1,11 @@
-#!/bin/bash /usr/local/bin/ruby
+require_relative "config/capybara";
+require_relative "config/db";
 
-require "/app/config/capybara";
-require "/app/config/db";
-
-puts "Running"
 User.all.each do |user|
   begin
     browser = Capybara.current_session
-    browser.visit "https://www.myfitnesspal.com/account/login"
 
+    browser.visit "https://www.myfitnesspal.com/account/login"
     browser.fill_in "username", with: user.email
     browser.fill_in "password", with: user.password
     browser.click_button "Log In"
@@ -18,8 +15,11 @@ User.all.each do |user|
     browser.click_button "Add to Diary"
 
     user.failed_attempts = 0
-  rescue
+  rescue => exception
     user.failed_attempts = user.failed_attempts + 1
+    # if user.failed_attempts > 3
+    # 	UserMailer.failed_attempts.deliver
+    # end
   end
 
   if user.changed?
@@ -28,7 +28,6 @@ User.all.each do |user|
     user.touch
   end
 
-  sleep 5
   Capybara.reset_sessions!
 end
 
